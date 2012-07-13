@@ -1,4 +1,5 @@
 <?php
+  # touch Thu Jul 12 17:38
   $db=yaml_parse_file('db.yaml');
   print_r($db);
   $connection = mysql_connect($db['host'], $db['username'], $db['password']);
