@@ -5,10 +5,13 @@
   print_r($db);
   $connection = mysql_connect($db['host'], $db['username'], $db['password']);
   mysql_select_db($db['database'], $connection);
+  echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
 
   print_r($connection);
 
   $result = mysql_query('SELECT `access_time` FROM `last_access` ORDER BY `access_time` DESC LIMIT 1');
+  echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+
   print_r($result);
 
   $row = mysql_fetch_array($result);
@@ -16,6 +19,8 @@
 
 echo('INSERT INTO `last_access` SET `access_time` = \''.date('Y-m-d H:i:s').'\'');
   mysql_query('INSERT INTO `last_access` SET `access_time` = \''.date('Y-m-d H:i:s').'\'');
+  echo mysql_errno($connection) . ": " . mysql_error($connection) . "\n";
+
 
         echo "</pre>";
   echo 'Hello World MODIFIED. Today\'s date is ',date('d/m/Y h:i:s'),'.';
